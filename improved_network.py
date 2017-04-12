@@ -28,8 +28,10 @@ class Network(object):
         self.weights = [np.random.randn(y, x) / np.sqrt(x) for x, y in zip(self.sizes[:-1], self.sizes[1:])]
 
     def feedforward(self, a):
+        print("feeding forward")
         for b, w in zip(self.biases, self.weights):
             a = sigmoid(np.dot(w, a) + b)
+        print('done feeding forward')
         return a
 
     def SGD(self, training_data, epochs, mini_batch_size, learning_rate,
